@@ -1,0 +1,184 @@
+<div class="container mt-5 ">
+  <div class="add-header  border">
+    <!-- search -->
+    <div class=" row p-5   ">   
+          <div class="col-md-3 ">
+            <label class="control-label col-form-label ">ID</label>
+            <input class="form-control " formcontrolname="id"  placeholder="Enter id" type="text"   >
+          </div>
+        
+        <div class="col-md-3 ">
+          <div class="form-group">
+            <label class="control-label col-form-label">Name</label>
+            <input class="form-control" formcontrolname="name" placeholder="Enter Name" type="text"  >
+          </div>
+        </div>
+
+        <div class=" col-md-3">
+          <label class="control-label col-form-label " >Danh muc</label>
+          <ng-select
+            class="form-control"
+            [items]="Danhmuc" 
+            bindLabel="name"
+            placeholder="Select category"
+            [(ngModel)]="selectedcategory"
+            >
+          </ng-select>
+        </div>
+         
+        <div class="col-md-3">
+          <label class="control-label col-form-label " >Brand</label>
+          <ng-select
+            class="form-control"
+            [items]="Brand" 
+            bindLabel="name"
+            placeholder="Search and Select Brand "
+            [(ngModel)]="selectedbrand">
+          </ng-select>
+        </div>
+
+      
+    </div>
+
+
+    <div class=" row p-5 my-5 ">
+        
+      <div class="col-md-3">
+        <label class="control-label col-form-label " >Supplier</label>
+        <ng-select
+          class="form-control"
+          [items]="Supplier" 
+          bindLabel="name"
+          placeholder="Search and Select Supplier "
+          [(ngModel)]="selectedsupplier">
+        </ng-select>
+      </div>
+
+        
+      <div class="col-md-3">
+        <label class="control-label col-form-label " >Campaign</label>
+        <ng-select
+          class="form-control"
+          [items]="Campaign" 
+          bindLabel="name"
+          placeholder="Search and Select Campaign "
+          [(ngModel)]="selectedcampaign">
+        </ng-select>
+      </div>
+
+        
+      <div class="col-md-3">
+        <label class="control-label col-form-label " >Hot</label>
+        <ng-select
+          class="form-control"
+          [items]="Hot" 
+          bindLabel="name"
+          placeholder="Select is Hot "
+          [(ngModel)]="selectedhot">
+        </ng-select>
+      </div>
+
+        
+      <div class="col-md-3">
+        <label class="control-label col-form-label " >Position</label>
+        <ng-select
+          class="form-control"
+          [items]="Position" 
+          bindLabel="name"
+          placeholder="Select Position "
+          [(ngModel)]="selectedposition">
+        </ng-select>
+      </div>
+
+    </div>
+
+    <div class=" row p-5 my-5 ">
+
+    <div class="col-md-3">
+      <div class="form-group">
+        <label class="control-label col-form-label">Creater ID</label>
+        <input class="form-control" formcontrolname="createrId" placeholder="Enter creater id" type="text">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label class="control-label col-form-label">Creater Name</label>
+        <input class="form-control" formcontrolname="createrName" placeholder="Enter creater name " type="text">
+      </div>
+    </div>
+    
+    <div class="col-md-3">
+      <label class="control-label col-form-label " >Sort By</label>
+      <ng-select
+        class="form-control"
+        [items]="Sort_By" 
+        bindLabel="name"
+        placeholder="Search and Select Brand "
+        [(ngModel)]="selectedsortby">
+      </ng-select>
+
+
+  </div>
+</div>
+
+
+  <!-- <input class="btn btn-primary" type="reset" value="Reset">
+          <button type="submit" class="btn btn-primary">Search</button> -->
+
+  <div class="row mb-5 ">
+    <div class="row ">
+      <a class="nav-link col-md-2 menu-item active " href="javascript:void(0)" (click)="filterStatus()">Tất cả</a>
+      <a class="nav-link col-md-2 " href="javascript:void(0)" (click)="filterStatus(2)">Đang hoạt động</a>
+      <a class="nav-link col-md-2 " href="javascript:void(0)" (click)="filterStatus(0)">Chờ duyệt</a>
+      <a class="nav-link col-md-2 " href="javascript:void(0)" (click)="filterStatus(-1)">Vi phạm</a>
+      <a class="nav-link col-md-2 " href="javascript:void(0)" (click)="filterStatus(3)">Hết hàng</a>
+    </div>
+
+
+    <table class="table table-bordered table-sm table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Image</th>
+          <th>Products</th>
+          <th>Status</th>
+          <th>Sort Order</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sp of products">
+          <td>{{sp.id}}</td>
+          <td>{{sp.image}}</td>
+          <td>
+            <div>{{sp.name}}</div>
+            <div>Campaign : {{sp.campaign.name}}</div>
+            <div>Price : {{sp.price}}</div>
+            <div>Discount : {{sp.discount}}</div>
+            <div>quantity : {{sp.quantity}}</div>
+            <div></div>
+          </td>
+          <td>
+            <span class="label-success"> Hiển thị </span>
+            {{sp.status}}
+
+          </td>
+
+          <td>
+            <input type="text"><br>
+            <button onclick="">Update</button>
+          </td>
+          <td>
+            <div>{{sp.user.user_name}}</div>
+            <div>{{sp.created_at}}</div>
+            <div>{{sp.updated_at}}</div>
+          </td>
+
+        </tr>
+      </tbody>
+
+    </table>
+
+
+  </div>
+</div>
